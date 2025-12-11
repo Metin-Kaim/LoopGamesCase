@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SwordBubble
+  - Sword
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -12,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - SwordBubble
+  - Enemy
+  - Player
+  - Sword
   - 
   - 
   - 

@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4667989527554344680}
   - component: {fileID: 9129681913813825695}
   - component: {fileID: 1080467258372019549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SwordBubble
   m_TagString: SwordBubble
   m_Icon: {fileID: 0}

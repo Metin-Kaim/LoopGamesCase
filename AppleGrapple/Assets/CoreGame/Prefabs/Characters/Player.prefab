@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3409998428054172225}
   - component: {fileID: 1474120254164091848}
   - component: {fileID: 2539117329011487454}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -312,11 +312,12 @@ GameObject:
   - component: {fileID: 7681392544420208361}
   - component: {fileID: 988700811322934585}
   - component: {fileID: 5289253481090976018}
-  - component: {fileID: 4219183438411674654}
   - component: {fileID: 6380178012447720835}
-  m_Layer: 0
+  - component: {fileID: 4622058389532107006}
+  - component: {fileID: 92101679730977994}
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,24 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f0da36a4d60424c9f769490972d5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4219183438411674654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783229100411088572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9c479ff3a44a44d9f6f981fd3902d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orbitParent: {fileID: 6611568512080600110}
-  swordPrefab: {fileID: 6357480543434515411, guid: bfdc2f8b7c3c7064c80684293fe35dfa, type: 3}
-  radius: 0.5
-  smoothSpeed: 8
-  initialSwordCount: 2
-  swordScaleAnimationDuration: 0.5
 --- !u!95 &6380178012447720835
 Animator:
   serializedVersion: 5
@@ -468,6 +451,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4622058389532107006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783229100411088572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6239fd149c18aa944a2fa5d698411f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPoint: {fileID: 6611568512080600110}
+  radius: 0.6
+  smoothSpeed: 8
+  initialSwordCount: 2
+  swordScaleAnimationDuration: 0.5
+--- !u!114 &92101679730977994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783229100411088572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b9da2ccbb319c44b00d85adce2a76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  visual: {fileID: 5792849292995558583}
 --- !u!1 &3894243507558640159
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +630,7 @@ GameObject:
   - component: {fileID: 2384188040276296410}
   - component: {fileID: 9029303100263454567}
   - component: {fileID: 558330785887057243}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +799,7 @@ GameObject:
   - component: {fileID: 8826523398377826231}
   - component: {fileID: 7768022943375996559}
   - component: {fileID: 6418769214124629597}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

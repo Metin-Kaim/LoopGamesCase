@@ -14,7 +14,6 @@ namespace Assets.CoreGame.Scripts.Controllers
 
         private void Awake()
         {
-            //Initialize pool of sword bubbles
             swordBubbles = new List<GameObject>();
             for (int i = 0; i < initialBubbleCountInPool; i++)
             {

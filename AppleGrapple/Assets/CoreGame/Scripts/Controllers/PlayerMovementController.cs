@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Controllers
 {
+    [RequireComponent(typeof(Animator))]
     public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private Joystick joystick;
