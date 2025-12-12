@@ -17,8 +17,8 @@ namespace Assets.CoreGame.Scripts.Controllers
 
         private void Start()
         {
-            _gameAreaBoundary = GameSignals.Instance.GetGameAreaBoundary.Invoke();
             _animator = GetComponent<Animator>();
+            _gameAreaBoundary = (Vector2)(GameSignals.Instance.GetGameAreaBoundary?.Invoke());
         }
 
         private void Update()

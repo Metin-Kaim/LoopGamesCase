@@ -1,6 +1,7 @@
 using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Signals;
 using DG.Tweening;
+using ScratchCardAsset;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Assets.CoreGame.Scripts.Handlers
     {
         [Header("References")]
         public Transform weaponPoint;
+        public ScratchCard scratchCard;
 
         [Header("Settings")]
         public float radius = 1.5f;
@@ -21,6 +23,14 @@ namespace Assets.CoreGame.Scripts.Handlers
 
         public int SwordCount => _swords.Count;
 
+        private void Awake()
+        {
+            if (scratchCard == null)
+            {
+                scratchCard = GameObject.FindGameObjectWithTag("ScratchCard")?.GetComponent<ScratchCard>();
+            }
+        }
+
         private void Start()
         {
             for (int i = 0; i < initialSwordCount; i++)
@@ -31,7 +41,7 @@ namespace Assets.CoreGame.Scripts.Handlers
 
         public void SwordBubbleCollected(GameObject bubble)
         {
-            SwordBubbleSignals.Instance.onSwordBubbleCollected.Invoke(bubble);
+            SwordBubbleSignals.Instance.onSwordBubbleCollected?.Invoke(bubble);
             IncreaseSword();
         }
 
@@ -39,6 +49,20 @@ namespace Assets.CoreGame.Scripts.Handlers
         {
             UpdateSwordPositions();
             RotateSwordsToCharacter();
+
+            ScratchCard();
+        }
+
+        private void ScratchCard()
+        {
+            Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+            scratchCard.ManuelScratch(pos);
+
+            foreach (var sword in _swords)
+            {
+                Vector3 swordPos = Camera.main.WorldToScreenPoint(sword.transform.position);
+                scratchCard.ManuelScratch(swordPos);
+            }
         }
 
         public void DecreaseSword(SwordHandler sword)
@@ -46,14 +70,14 @@ namespace Assets.CoreGame.Scripts.Handlers
             if (_swords.Contains(sword))
             {
                 _swords.Remove(sword);
-                PoolSignals.Instance.onReturnItemToPool.Invoke(PoolType.Sword, sword.gameObject);
+                PoolSignals.Instance.onReturnItemToPool?.Invoke(PoolType.Sword, sword.gameObject);
             }
         }
 
         public void IncreaseSword(bool playAnimation = true)
         {
             //Get sword from pool
-            SwordHandler sword = PoolSignals.Instance.onGetItemFromPool.Invoke(PoolType.Sword).GetComponent<SwordHandler>();
+            SwordHandler sword = PoolSignals.Instance.onGetItemFromPool?.Invoke(PoolType.Sword).GetComponent<SwordHandler>();
             sword.transform.parent = weaponPoint;
             sword.transform.localPosition = Vector3.zero;
             sword.Init(this);

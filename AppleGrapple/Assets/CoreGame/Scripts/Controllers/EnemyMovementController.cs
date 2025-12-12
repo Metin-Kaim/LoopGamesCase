@@ -15,6 +15,7 @@ namespace Assets.CoreGame.Scripts.Controllers
         private float _stoppingDistance;
         private bool _isStopped;
         private Vector2 _gameAreaBoundary;
+        private Animator _animator;
 
         public bool IsStopped => _isStopped;
         public LayerMask BubbleLayer => bubbleLayer;
@@ -22,6 +23,7 @@ namespace Assets.CoreGame.Scripts.Controllers
 
         private void Start()
         {
+            _animator = GetComponent<Animator>();
             SetTargetPosition(transform.position);
             _gameAreaBoundary = GameSignals.Instance.GetGameAreaBoundary.Invoke();
         }
@@ -36,6 +38,7 @@ namespace Assets.CoreGame.Scripts.Controllers
             if (Vector3.Distance(transform.position, _targetPos) < _stoppingDistance)
             {
                 _isStopped = true;
+                _animator.SetBool("walk", false);
                 return;
             }
             _isStopped = false;
@@ -47,8 +50,9 @@ namespace Assets.CoreGame.Scripts.Controllers
             _isLeft = direction.x < 0;
             visual.rotation = Quaternion.Euler(Vector2.up * (_isLeft ? 180 : 0));
 
-
             transform.position += new Vector3(direction.x, direction.y, 0) * moveSpeed * Time.deltaTime;
+
+            _animator.SetBool("walk", true);
         }
 
         public void SetTargetPosition(Vector2 newTargetPos, float stoppingDistance = 0.1f)
