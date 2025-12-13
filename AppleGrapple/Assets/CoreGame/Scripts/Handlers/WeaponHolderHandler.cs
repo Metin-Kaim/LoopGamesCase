@@ -1,7 +1,6 @@
 using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Signals;
 using DG.Tweening;
-using ScratchCardAsset;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ namespace Assets.CoreGame.Scripts.Handlers
     {
         [Header("References")]
         public Transform weaponPoint;
-        public ScratchCard scratchCard;
+        public ErasableGround erasableGround;
 
         [Header("Settings")]
         public float radius = 1.5f;
@@ -25,9 +24,9 @@ namespace Assets.CoreGame.Scripts.Handlers
 
         private void Awake()
         {
-            if (scratchCard == null)
+            if (erasableGround == null)
             {
-                scratchCard = GameObject.FindGameObjectWithTag("ScratchCard")?.GetComponent<ScratchCard>();
+                erasableGround = GameObject.FindGameObjectWithTag("ScratchCard")?.GetComponent<ErasableGround>();
             }
         }
 
@@ -55,13 +54,14 @@ namespace Assets.CoreGame.Scripts.Handlers
 
         private void ScratchCard()
         {
-            Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
-            scratchCard.ManuelScratch(pos);
+            //Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+            erasableGround.EraseAtWorldPosition(transform.position);
 
             foreach (var sword in _swords)
             {
-                Vector3 swordPos = Camera.main.WorldToScreenPoint(sword.transform.position);
-                scratchCard.ManuelScratch(swordPos);
+                //Vector3 swordPos = Camera.main.WorldToScreenPoint(sword.transform.position);
+                //scratchCard.ManuelScratch(swordPos);
+                erasableGround.EraseAtWorldPosition(sword.transform.position);
             }
         }
 

@@ -25,6 +25,11 @@ namespace Assets.CoreGame.Scripts.Controllers
         private void OnEnable()
         {
             GameSignals.Instance.GetGameAreaBoundary += OnGetGameAreaBoundary;
+            GameSignals.Instance.GetGameArea += OnGetGameArea;
+        }
+        private Vector2 OnGetGameArea()
+        {
+            return new Vector2(groundWidth, groundHeight);
         }
         private Vector2 OnGetGameAreaBoundary()
         {
@@ -33,6 +38,7 @@ namespace Assets.CoreGame.Scripts.Controllers
         private void OnDisable()
         {
             GameSignals.Instance.GetGameAreaBoundary -= OnGetGameAreaBoundary;
+            GameSignals.Instance.GetGameArea -= OnGetGameArea;
         }
 
         private void GenerateBoundary()
@@ -114,5 +120,54 @@ namespace Assets.CoreGame.Scripts.Controllers
             public GameObject prefab;
             public float weight;
         }
+
+#if UNITY_EDITOR
+        // Draw preview of generated level in the scene view
+        private void OnDrawGizmos()
+        {
+            // Draw ground tiles grid
+            Gizmos.color = new Color(0f, 1f, 0f, 0.6f);
+            float halfGW = (groundWidth - 1) * tileSize / 2f;
+            float halfGH = (groundHeight - 1) * tileSize / 2f;
+
+            for (int x = 0; x < groundWidth; x++)
+            {
+                for (int y = 0; y < groundHeight; y++)
+                {
+                    Vector3 pos = transform.position + new Vector3(x * tileSize - halfGW, y * tileSize - halfGH, 0f);
+                    Gizmos.DrawWireCube(pos, new Vector3(tileSize, tileSize, 0.01f));
+                }
+            }
+
+            // Draw boundary rectangle
+            Gizmos.color = new Color(1f, 0f, 0f, 0.9f);
+            Vector3 boundaryCenter = transform.position;
+            Vector3 boundarySize = new Vector3(boundaryWidth * tileSize, boundaryHeight * tileSize, 0.01f);
+            Gizmos.DrawWireCube(boundaryCenter, boundarySize);
+
+            // Optionally draw boundary tiles positions
+            Gizmos.color = new Color(1f, 0.5f, 0f, 0.6f);
+            float halfBW = (boundaryWidth - 1) * tileSize / 2f;
+            float halfBH = (boundaryHeight - 1) * tileSize / 2f;
+
+            for (int x = 0; x < boundaryWidth; x++)
+            {
+                float posX = x * tileSize - halfBW;
+                Vector3 topPos = transform.position + new Vector3(posX, halfBH, 0f);
+                Vector3 bottomPos = transform.position + new Vector3(posX, -halfBH, 0f);
+                Gizmos.DrawWireCube(topPos, new Vector3(tileSize, tileSize, 0.01f));
+                Gizmos.DrawWireCube(bottomPos, new Vector3(tileSize, tileSize, 0.01f));
+            }
+
+            for (int y = 1; y < boundaryHeight - 1; y++)
+            {
+                float posY = y * tileSize - halfBH;
+                Vector3 leftPos = transform.position + new Vector3(-halfBW, posY, 0f);
+                Vector3 rightPos = transform.position + new Vector3(halfBW, posY, 0f);
+                Gizmos.DrawWireCube(leftPos, new Vector3(tileSize, tileSize, 0.01f));
+                Gizmos.DrawWireCube(rightPos, new Vector3(tileSize, tileSize, 0.01f));
+            }
+        } 
+#endif
     }
 }
