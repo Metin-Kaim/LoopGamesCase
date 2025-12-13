@@ -26,16 +26,15 @@ public class ErasableGround : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = TextureToSprite(groundTexture);
 
         Vector2 gameBoundary = GameSignals.Instance.GetGameArea.Invoke();
-        float scaleX = gameBoundary.x * 96 / groundTexture.width;
-        float scaleY = gameBoundary.y * 96 / groundTexture.height;
+        float tileSize = GameSignals.Instance.GetTileSize.Invoke();
+        float scaleX = gameBoundary.x * tileSize / groundTexture.width;
+        float scaleY = gameBoundary.y * tileSize / groundTexture.height;
         transform.localScale = new Vector3(scaleX, scaleY, 1);
 
         InitializeMask();
     }
-    public Sprite TextureToSprite(
-       Texture2D texture,
-       float pixelsPerUnit = 100f,
-       Vector2? pivot = null)
+
+    public Sprite TextureToSprite(Texture2D texture, float pixelsPerUnit = 100f, Vector2? pivot = null)
     {
         if (texture == null)
         {

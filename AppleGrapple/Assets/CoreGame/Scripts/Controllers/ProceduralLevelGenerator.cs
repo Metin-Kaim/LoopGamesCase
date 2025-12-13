@@ -26,6 +26,11 @@ namespace Assets.CoreGame.Scripts.Controllers
         {
             GameSignals.Instance.GetGameAreaBoundary += OnGetGameAreaBoundary;
             GameSignals.Instance.GetGameArea += OnGetGameArea;
+            GameSignals.Instance.GetTileSize += OnGetTileSize;
+        }
+        private float OnGetTileSize()
+        {
+            return tileSize;
         }
         private Vector2 OnGetGameArea()
         {
@@ -39,6 +44,7 @@ namespace Assets.CoreGame.Scripts.Controllers
         {
             GameSignals.Instance.GetGameAreaBoundary -= OnGetGameAreaBoundary;
             GameSignals.Instance.GetGameArea -= OnGetGameArea;
+            GameSignals.Instance.GetTileSize -= OnGetTileSize;
         }
 
         private void GenerateBoundary()

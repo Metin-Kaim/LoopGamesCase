@@ -8,6 +8,7 @@ namespace Assets.CoreGame.Scripts.Signals
         public static GameSignals Instance;
 
         public Func<Vector2> GetGameArea;
+        public Func<float> GetTileSize;
         public Func<Vector2> GetGameAreaBoundary;
 
         private void Awake()
