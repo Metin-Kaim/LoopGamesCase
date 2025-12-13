@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.CoreGame.Scripts.Abstract
 {
@@ -23,10 +24,7 @@ namespace Assets.CoreGame.Scripts.Abstract
             }
         }
 
-        private void HitReaction(Vector3 hitDirection)
-        {
-            visual.DOMove(visual.position + hitDirection * 0.3f, 0.1f).SetLoops(2, LoopType.Yoyo);
-        }
+        protected abstract void HitReaction(Vector3 hitDirection);
 
         private void Die()
         {

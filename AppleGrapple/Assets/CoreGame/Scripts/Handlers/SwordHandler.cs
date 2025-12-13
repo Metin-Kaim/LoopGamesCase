@@ -1,4 +1,5 @@
 ﻿using Assets.CoreGame.Scripts.Abstract;
+using Assets.CoreGame.Scripts.Signals;
 using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Handlers
@@ -26,11 +27,21 @@ namespace Assets.CoreGame.Scripts.Handlers
                 if (_weaponHolder == collision.GetComponent<SwordHandler>()._weaponHolder)
                     return;
 
+                if (_weaponHolder.CompareTag("Player"))
+                {
+                    CameraSignals.Instance.onCameraShake?.Invoke();
+                }
+
                 _weaponHolder.DecreaseSword(this);
             }
             else if (collision.CompareTag("Enemy") || collision.CompareTag("Player"))
             {
                 if (_weaponHolder.gameObject == collision.gameObject) return;
+
+                if(_weaponHolder.CompareTag("Enemy") && collision.CompareTag("Player") || _weaponHolder.CompareTag("Player") && collision.CompareTag("Enemy"))
+                {
+                    CameraSignals.Instance.onCameraShake?.Invoke();
+                }
 
                 collision.GetComponent<AbsCharacterManager>().TakeDamage(transform);
             }

@@ -10,25 +10,19 @@ namespace Assets.CoreGame.Scripts.Handlers
     {
         [Header("References")]
         public Transform weaponPoint;
-        public ErasableGround erasableGround;
 
         [Header("Settings")]
         public float radius = 1.5f;
         public float smoothSpeed = 8f;
         public short initialSwordCount = 2;
         public float swordScaleAnimationDuration = 0.5f;
+        public float scratchInterval = 0.1f;
 
         private List<SwordHandler> _swords = new List<SwordHandler>();
+        private float _scratchTimer = 0f;
+        private byte _swordSwitchKey = 1;
 
         public int SwordCount => _swords.Count;
-
-        private void Awake()
-        {
-            if (erasableGround == null)
-            {
-                erasableGround = GameObject.FindGameObjectWithTag("ScratchCard")?.GetComponent<ErasableGround>();
-            }
-        }
 
         private void Start()
         {
@@ -49,20 +43,29 @@ namespace Assets.CoreGame.Scripts.Handlers
             UpdateSwordPositions();
             RotateSwordsToCharacter();
 
-            ScratchCard();
+            _scratchTimer += Time.deltaTime;
+            if (_scratchTimer >= scratchInterval)
+            {
+                _scratchTimer = 0f;
+                ScratchCard();
+            }
         }
-
         private void ScratchCard()
         {
-            //Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
-            erasableGround.EraseAtWorldPosition(transform.position);
+            ScratchSignals.Instance.OnScratchAtPosition.Invoke(transform.position);
 
-            foreach (var sword in _swords)
+            for (int i = 0; i < _swords.Count; i++)
             {
-                //Vector3 swordPos = Camera.main.WorldToScreenPoint(sword.transform.position);
-                //scratchCard.ManuelScratch(swordPos);
-                erasableGround.EraseAtWorldPosition(sword.transform.position);
+                if (_swords.Count > 10)
+                {
+                    if (i % _swordSwitchKey == 0) continue;
+                }
+                SwordHandler sword = _swords[i];
+
+                ScratchSignals.Instance.OnScratchAtPosition.Invoke(sword.transform.position);
             }
+            _swordSwitchKey %= 2;
+            _swordSwitchKey++;
         }
 
         public void DecreaseSword(SwordHandler sword)
@@ -121,6 +124,13 @@ namespace Assets.CoreGame.Scripts.Handlers
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 sword.transform.rotation = Quaternion.Euler(0, 0, angle - 180f);
             }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (_swords.Count > 8) return;
+            if (collision.CompareTag("SwordBubble"))
+                SwordBubbleCollected(collision.gameObject);
         }
     }
 }

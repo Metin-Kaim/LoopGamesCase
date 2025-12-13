@@ -16,20 +16,24 @@ namespace Assets.CoreGame.Scripts.Controllers
         private bool _isStopped;
         private Vector2 _gameAreaBoundary;
         private Animator _animator;
+        private bool _canMove;
 
         public bool IsStopped => _isStopped;
         public LayerMask BubbleLayer => bubbleLayer;
         public LayerMask CharacterLayers => characterLayers;
+        public bool CanMove { get => _canMove; set => _canMove = value; }
 
         private void Start()
         {
             _animator = GetComponent<Animator>();
             SetTargetPosition(transform.position);
             _gameAreaBoundary = GameSignals.Instance.GetGameAreaBoundary.Invoke();
+            _canMove = true;
         }
 
         private void Update()
         {
+            if (!_canMove) return;
             MoveTowardsTarget();
         }
 
@@ -45,7 +49,6 @@ namespace Assets.CoreGame.Scripts.Controllers
 
             Vector2 currentPosition = transform.position;
             Vector2 direction = (_targetPos - currentPosition).normalized;
-            direction.Normalize();
 
             _isLeft = direction.x < 0;
             visual.rotation = Quaternion.Euler(Vector2.up * (_isLeft ? 180 : 0));

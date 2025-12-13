@@ -54,7 +54,7 @@ Shader "Custom/ErasableGround2D"
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                o.maskUV = v.uv; // Mask tiling'siz
+                o.maskUV = v.uv;
                 o.color = v.color * _Color;
                 return o;
             }

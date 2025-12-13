@@ -7188,10 +7188,6 @@
                 "excluded": true
             },
             {
-                "name": "DG.Tweening.Sequence",
-                "excluded": true
-            },
-            {
                 "name": "DG.Tweening.CustomPlugins.PureQuaternionPlugin",
                 "excluded": true
             },
@@ -7205,10 +7201,6 @@
             },
             {
                 "name": "DG.Tweening.Plugins.DoublePlugin",
-                "excluded": true
-            },
-            {
-                "name": "DG.Tweening.Plugins.FloatPlugin",
                 "excluded": true
             },
             {
@@ -7241,11 +7233,11 @@
             },
             {
                 "name": "DG.Tweening.Core.Enums.FilterType",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "DG.Tweening.Core.Enums.OperationType",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "DG.Tweening.Core.Enums.SpecialStartupMode",
@@ -8488,14 +8480,6 @@
                 "excluded": false
             },
             {
-                "name": "pc.Debugger.Components.EditorCamera",
-                "excluded": true
-            },
-            {
-                "name": "pc.Debugger.Components.EditorGUI",
-                "excluded": true
-            },
-            {
                 "name": "Assets.CoreGame.Scripts.Controllers.PoolInfo",
                 "excluded": false
             },
@@ -8508,11 +8492,11 @@
                 "excluded": false
             },
             {
-                "name": "Assets.CoreGame.Scripts.Managers.EnemyManager",
+                "name": "Assets.CoreGame.Scripts.Handlers.EnemyHandler",
                 "excluded": false
             },
             {
-                "name": "Assets.CoreGame.Scripts.Managers.PlayerManager",
+                "name": "Assets.CoreGame.Scripts.Handlers.PlayerHandler",
                 "excluded": false
             }
         ],
@@ -9041,7 +9025,7 @@
                     },
                     {
                         "name": "clipu8",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "clip16",
@@ -12231,11 +12215,11 @@
                     },
                     {
                         "name": "IncreaseCapacity",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetCapacity",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "AddIfNotPresent",
@@ -12393,7 +12377,7 @@
                     },
                     {
                         "name": "$clone",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -17355,7 +17339,7 @@
                     },
                     {
                         "name": "SetVector$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetVector",
@@ -18397,11 +18381,11 @@
                     },
                     {
                         "name": "orthographicSize#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "orthographicSize#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "orthographic#get",
@@ -19151,7 +19135,7 @@
                     },
                     {
                         "name": "SetPixels32$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetPixels32$2",
@@ -19159,7 +19143,7 @@
                     },
                     {
                         "name": "Apply$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Apply",
@@ -21205,7 +21189,7 @@
                     },
                     {
                         "name": "To$4",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "To$1",
@@ -21325,7 +21309,7 @@
                     },
                     {
                         "name": "Shake",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Shake$1",
@@ -21341,7 +21325,7 @@
                     },
                     {
                         "name": "Sequence",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Sequence$1",
@@ -21397,7 +21381,7 @@
                     },
                     {
                         "name": "Kill",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Kill$1",
@@ -22045,15 +22029,15 @@
                 "instanceMethods": [
                     {
                         "name": "getDefaultValue",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Reset",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getHashCode",
@@ -22065,7 +22049,7 @@
                     },
                     {
                         "name": "$clone",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -28447,7 +28431,7 @@
                     },
                     {
                         "name": "GetSequence",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetUpdateType",
@@ -28455,7 +28439,7 @@
                     },
                     {
                         "name": "AddActiveTweenToSequence",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DespawnAll",
@@ -28503,7 +28487,7 @@
                     },
                     {
                         "name": "FilteredOperation",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Complete",
@@ -28519,11 +28503,11 @@
                     },
                     {
                         "name": "Goto",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Pause",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Play",
@@ -28539,11 +28523,11 @@
                     },
                     {
                         "name": "Restart",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Rewind",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SmoothRewind",
@@ -28615,7 +28599,7 @@
                     },
                     {
                         "name": "ManageOnRewindCallbackWhenAlreadyRewinded",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -28691,7 +28675,7 @@
                     },
                     {
                         "name": "DOOrthoSize",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DOPixelRect",
@@ -28711,7 +28695,7 @@
                     },
                     {
                         "name": "DOShakePosition$2",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DOShakePosition$3",
@@ -28967,7 +28951,7 @@
                     },
                     {
                         "name": "DOKill",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DOKill$1",
@@ -29097,7 +29081,7 @@
                     },
                     {
                         "name": "Pause",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Play",
@@ -29113,7 +29097,7 @@
                     },
                     {
                         "name": "Restart",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Rewind",
@@ -29339,7 +29323,7 @@
                     },
                     {
                         "name": "OnComplete",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnKill",
@@ -29359,7 +29343,7 @@
                     },
                     {
                         "name": "Append",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Prepend",
@@ -29367,7 +29351,7 @@
                     },
                     {
                         "name": "Join",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Insert",
@@ -29395,7 +29379,7 @@
                     },
                     {
                         "name": "ValidateAddToSequence",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "From",
@@ -32036,6 +32020,10 @@
                     {
                         "name": "OnGetGameArea",
                         "excluded": false
+                    },
+                    {
+                        "name": "OnGetTileSize",
+                        "excluded": false
                     }
                 ]
             },
@@ -32065,20 +32053,6 @@
                     },
                     {
                         "name": "OnSwordBubbleCollected",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Assets.CoreGame.Scripts.Handlers.PlayerHandler",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "OnTriggerEnter2D",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Awake",
                         "excluded": false
                     }
                 ]
@@ -32770,10 +32744,6 @@
                         "excluded": false
                     },
                     {
-                        "name": "HitReaction",
-                        "excluded": false
-                    },
-                    {
                         "name": "Die",
                         "excluded": false
                     }
@@ -32828,6 +32798,14 @@
                     {
                         "name": "SetNewRandomPosition",
                         "excluded": false
+                    },
+                    {
+                        "name": "CanMove#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CanMove#set",
+                        "excluded": false
                     }
                 ]
             },
@@ -32870,20 +32848,6 @@
                 ]
             },
             {
-                "className": "Assets.CoreGame.Scripts.Handlers.EnemyHandler",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Awake",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnTriggerEnter2D",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
                 "className": "Assets.CoreGame.Scripts.Handlers.SwordHandler",
                 "staticMethods": [],
                 "instanceMethods": [
@@ -32911,10 +32875,6 @@
                     },
                     {
                         "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Awake",
                         "excluded": false
                     },
                     {
@@ -32947,6 +32907,10 @@
                     },
                     {
                         "name": "RotateSwordsToCharacter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerEnter2D",
                         "excluded": false
                     }
                 ]
@@ -33020,40 +32984,20 @@
                         "excluded": false
                     },
                     {
-                        "name": "EraseAtUV",
-                        "excluded": true
-                    },
-                    {
-                        "name": "EraseAreaCompletely",
-                        "excluded": true
-                    },
-                    {
-                        "name": "ResetMask",
-                        "excluded": true
-                    },
-                    {
-                        "name": "GetErasePercentage",
-                        "excluded": true
-                    },
-                    {
                         "name": "WorldToUV",
                         "excluded": false
                     },
                     {
-                        "name": "UVToWorld",
-                        "excluded": true
-                    },
-                    {
-                        "name": "RecalculateBounds",
-                        "excluded": true
-                    },
-                    {
-                        "name": "OnDrawGizmos",
-                        "excluded": true
-                    },
-                    {
                         "name": "TextureToSprite",
                         "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
                     }
                 ]
             },
@@ -33450,6 +33394,192 @@
                     {
                         "name": "GetContacts$5",
                         "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.Sequence",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Setup",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DoStartup",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DoApplyTween",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ApplyInternalCycle",
+                        "excluded": false
+                    },
+                    {
+                        "name": "StableSortSequencedObjs",
+                        "excluded": false
+                    },
+                    {
+                        "name": "IsAnyCallbackSet",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DoPrepend",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DoInsert",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DoAppendInterval",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DoPrependInterval",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DoInsertCallback",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UpdateDelay",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Reset",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Validate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Startup",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ApplyTween",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.Plugins.FloatPlugin",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Reset",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetFrom$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetFrom",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ConvertToStartValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetRelativeEndValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetChangeValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetSpeedBasedDuration",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EvaluateAndApply",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Assets.CoreGame.Scripts.Controllers.CameraShakeController",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Shake",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Assets.CoreGame.Scripts.Signals.CameraSignals",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Assets.CoreGame.Scripts.Signals.ScratchSignals",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Assets.CoreGame.Scripts.Managers.EnemyManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HitReaction",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Assets.CoreGame.Scripts.Managers.PlayerManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "HitReaction",
+                        "excluded": false
                     }
                 ]
             }

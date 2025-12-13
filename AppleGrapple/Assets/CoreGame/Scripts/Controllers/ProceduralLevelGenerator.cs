@@ -1,5 +1,4 @@
 ﻿using Assets.CoreGame.Scripts.Signals;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Controllers
