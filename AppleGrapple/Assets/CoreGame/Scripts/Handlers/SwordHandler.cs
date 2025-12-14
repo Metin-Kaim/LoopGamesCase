@@ -34,7 +34,7 @@ namespace Assets.CoreGame.Scripts.Handlers
             swordIndex++;
         }
 
-        public void ThrowItAway(Vector2 direction)
+        public void ThrowItAway()
         {
             _weaponCollider.enabled = false;
             // Detach from weapon holder and move it towards the direction with DOTween
@@ -69,7 +69,7 @@ namespace Assets.CoreGame.Scripts.Handlers
                 }
 
                 _weaponHolder.DecreaseSword(this);
-                ThrowItAway((collision.transform.position - transform.position).normalized);
+                ThrowItAway();
 
             }
             else if (collision.CompareTag("Enemy") || collision.CompareTag("Player"))

@@ -4,5 +4,6 @@
     {
         Sword,
         SwordHitVFX,
+        SwordBubble,
     }
 }

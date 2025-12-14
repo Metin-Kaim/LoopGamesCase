@@ -1,7 +1,9 @@
 using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Signals;
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Handlers
@@ -34,7 +36,7 @@ namespace Assets.CoreGame.Scripts.Handlers
 
         public void SwordBubbleCollected(GameObject bubble)
         {
-            SwordBubbleSignals.Instance.onSwordBubbleCollected?.Invoke(bubble);
+            PoolSignals.Instance.onReturnItemToPool.Invoke(PoolType.SwordBubble, bubble);
             IncreaseSword();
         }
 
@@ -130,6 +132,16 @@ namespace Assets.CoreGame.Scripts.Handlers
             if (_swords.Count > 8) return;
             if (collision.CompareTag("SwordBubble"))
                 SwordBubbleCollected(collision.gameObject);
+        }
+
+        public void ClearSwords()
+        {
+            for (int i = 0; i < _swords.Count; i++)
+            {
+                SwordHandler sword = _swords[0];
+                DecreaseSword(sword);
+                sword.ThrowItAway();
+            }
         }
     }
 }

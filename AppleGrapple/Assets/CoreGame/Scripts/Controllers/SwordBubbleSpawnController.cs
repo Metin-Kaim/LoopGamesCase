@@ -1,27 +1,12 @@
+using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Signals;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Controllers
 {
     public class SwordBubbleSpawnController : MonoBehaviour
     {
-        [SerializeField] private GameObject swordBubble;
-        [SerializeField] private short initialBubbleCountInPool = 10;
-
-        [SerializeField] private List<GameObject> swordBubbles;
-
-        private void Awake()
-        {
-            swordBubbles = new List<GameObject>();
-            for (int i = 0; i < initialBubbleCountInPool; i++)
-            {
-                GameObject bubble = Instantiate(swordBubble, transform);
-                OnSwordBubbleCollected(bubble);
-            }
-        }
-
         private IEnumerator Start()
         {
             Vector2 gameAreaBoundary = GameSignals.Instance.GetGameAreaBoundary.Invoke();
@@ -36,31 +21,9 @@ namespace Assets.CoreGame.Scripts.Controllers
 
                 Vector3 spawnPos = new Vector3(posX, posY, 0f);
 
-                if (swordBubbles.Count > 0)
-                {
-                    GameObject bubble = swordBubbles[0];
-                    swordBubbles.RemoveAt(0);
-                    bubble.transform.position = spawnPos;
-                    bubble.SetActive(true);
-                }
-                else
-                    Instantiate(swordBubble, spawnPos, Quaternion.identity, transform);
+                GameObject bubble = PoolSignals.Instance.onGetItemFromPool.Invoke(PoolType.SwordBubble);
+                bubble.transform.position = spawnPos;
             }
-        }
-
-        private void OnEnable()
-        {
-            SwordBubbleSignals.Instance.onSwordBubbleCollected += OnSwordBubbleCollected;
-        }
-        private void OnDisable()
-        {
-            SwordBubbleSignals.Instance.onSwordBubbleCollected -= OnSwordBubbleCollected;
-        }
-
-        private void OnSwordBubbleCollected(GameObject bubble)
-        {
-            bubble.SetActive(false);
-            swordBubbles.Add(bubble);
         }
     }
 }

@@ -20,5 +20,11 @@ namespace Assets.CoreGame.Scripts.Managers
             _playerMovementController.SetCanMove(false);
             PlayAnimation(hitDirection, () => { _playerMovementController.SetCanMove(true); });
         }
+
+        protected override void OnDie()
+        {
+            //Open End Card
+            base.OnDie();
+        }
     }
 }

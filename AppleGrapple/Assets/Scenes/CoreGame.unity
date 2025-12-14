@@ -506,9 +506,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3072789767245227753, guid: f1d49e94b1f6d5344b0806ed20611cfa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3805886235956560986, guid: f1d49e94b1f6d5344b0806ed20611cfa, type: 3}
       propertyPath: scratchInterval
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6147740318735108926, guid: f1d49e94b1f6d5344b0806ed20611cfa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555972279469551239, guid: f1d49e94b1f6d5344b0806ed20611cfa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000012516975
       objectReference: {fileID: 0}
     - target: {fileID: 7803240254620944920, guid: f1d49e94b1f6d5344b0806ed20611cfa, type: 3}
       propertyPath: m_Name
@@ -592,9 +604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c132b775a9bd345a342a6bdd4fcd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordBubble: {fileID: 8393000937340883045, guid: adf266226c651154fbbb919082634605, type: 3}
-  initialBubbleCountInPool: 10
-  swordBubbles: []
 --- !u!4 &746464429
 Transform:
   m_ObjectHideFlags: 0
@@ -618,6 +627,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3072789767245227753, guid: 2d74451a62486d24f88ea265ef44e8e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3805886235956560986, guid: 2d74451a62486d24f88ea265ef44e8e8, type: 3}
       propertyPath: erasableGround
       value: 
@@ -628,7 +641,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3805886235956560986, guid: 2d74451a62486d24f88ea265ef44e8e8, type: 3}
       propertyPath: initialSwordCount
-      value: 5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6147740318735108926, guid: 2d74451a62486d24f88ea265ef44e8e8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555972279469551239, guid: 2d74451a62486d24f88ea265ef44e8e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000012516975
       objectReference: {fileID: 0}
     - target: {fileID: 7803240254620944920, guid: 2d74451a62486d24f88ea265ef44e8e8, type: 3}
       propertyPath: m_Name
@@ -831,6 +852,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3072789767245227753, guid: bd16034e03e5aeb4682ddc52f505e6d8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6147740318735108926, guid: bd16034e03e5aeb4682ddc52f505e6d8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555972279469551239, guid: bd16034e03e5aeb4682ddc52f505e6d8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000012516975
+      objectReference: {fileID: 0}
     - target: {fileID: 7803240254620944920, guid: bd16034e03e5aeb4682ddc52f505e6d8, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -920,8 +953,12 @@ MonoBehaviour:
     IncrementSize: 3
   - PoolType: 1
     Prefab: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347, type: 3}
-    InitialSize: 3
+    InitialSize: 4
     IncrementSize: 1
+  - PoolType: 2
+    Prefab: {fileID: 8393000937340883045, guid: adf266226c651154fbbb919082634605, type: 3}
+    InitialSize: 15
+    IncrementSize: 5
 --- !u!4 &1601828198
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,6 +1149,10 @@ PrefabInstance:
     - target: {fileID: 1783229100411088572, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029386209627376163, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000012516975
       objectReference: {fileID: 0}
     - target: {fileID: 3894243507558640159, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
       propertyPath: m_IsActive

@@ -1,5 +1,8 @@
 ﻿using Assets.CoreGame.Scripts.Abstract;
 using Assets.CoreGame.Scripts.Controllers;
+using Assets.CoreGame.Scripts.Enums;
+using Assets.CoreGame.Scripts.Signals;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Managers
@@ -18,7 +21,23 @@ namespace Assets.CoreGame.Scripts.Managers
         protected override void HitReaction(Vector3 hitDirection)
         {
             _enemyMovementController.SetCanMove(false);
-            PlayAnimation(hitDirection, () => { _enemyMovementController.SetCanMove(true); });
+            PlayAnimation(hitDirection, () => { if (!healthController.IsDead) _enemyMovementController.SetCanMove(true); });
+        }
+
+        protected override void OnDie()
+        {
+            base.OnDie();
+            transform.DOScale(0.2f, 1f).SetEase(Ease.InBack).OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+            });
+
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject bubble = PoolSignals.Instance.onGetItemFromPool.Invoke(PoolType.SwordBubble);
+                Vector2 rndPos = Random.insideUnitCircle + (Vector2)transform.position;
+                bubble.transform.position = rndPos;
+            }
         }
     }
 }

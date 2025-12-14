@@ -135,6 +135,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4079321695883449601, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079321695883449601, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: isPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079321695883449601, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: middleLayerAnimationDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079321695883449601, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: middleLayerAnimationDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 988700811322934585, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
     - {fileID: 5289253481090976018, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}

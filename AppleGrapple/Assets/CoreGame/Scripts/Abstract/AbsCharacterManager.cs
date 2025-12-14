@@ -1,5 +1,7 @@
 ﻿using Assets.CoreGame.Scripts.Controllers;
+using Assets.CoreGame.Scripts.Handlers;
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,27 +13,37 @@ namespace Assets.CoreGame.Scripts.Abstract
         [SerializeField] protected Transform visual;
         [SerializeField] private DOTweenAnimation hitMaskTween;
 
+        protected Collider2D collider;
+        protected HealthController healthController;
+
         private SpriteRenderer[] _spriteRenderers;
+        private WeaponHolderHandler _weaponHolderHandler;
 
         protected virtual void Awake()
         {
             _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+            healthController = GetComponent<HealthController>();
+            _weaponHolderHandler = GetComponent<WeaponHolderHandler>();
+            collider = GetComponent<Collider2D>();
         }
 
         public virtual void TakeDamage(Transform hitPoint)
         {
-            health--;
+            healthController.DecreaseHealth();
 
-            if (health <= 0)
-            {
-                Die();
-            }
-            else
-            {
-                Vector3 hitDirection = (visual.position - hitPoint.position).normalized;
-                HitReaction(hitDirection);
-            }
+            Vector3 hitDirection = (visual.position - hitPoint.position).normalized;
+            HitReaction(hitDirection);
+
+            if (healthController.IsDead)
+                OnDie();
         }
+
+        protected virtual void OnDie()
+        {
+            collider.enabled = false;
+            _weaponHolderHandler.ClearSwords();
+        }
+
         protected abstract void HitReaction(Vector3 hitDirection);
 
         protected void PlayAnimation(Vector3 hitDirection, UnityAction onComplete)
@@ -51,12 +63,6 @@ namespace Assets.CoreGame.Scripts.Abstract
             });
             foreach (var spriteRenderer in _spriteRenderers)
                 spriteRenderer.DOColor(Color.white, 0.2f).From().SetEase(Ease.Linear);
-        }
-
-        private void Die()
-        {
-            // Optional: Add death effect
-            Destroy(gameObject);
         }
     }
 }
