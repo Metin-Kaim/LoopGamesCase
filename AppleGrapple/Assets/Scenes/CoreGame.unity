@@ -165,7 +165,9 @@ MonoBehaviour:
     weight: 10
   boundaryWidth: 20
   boundaryHeight: 20
-  boundaryPrefab: {fileID: 4305941870601369853, guid: fed51f9b2937ee64585579f86e9afc5d, type: 3}
+  boundaryMainFence: {fileID: 4305941870601369853, guid: fed51f9b2937ee64585579f86e9afc5d, type: 3}
+  boundaryVerticalFence: {fileID: 8007780800501730953, guid: 8d19b16d6b99b8c48ab173f4149eeffa, type: 3}
+  boundaryHorizontalFence: {fileID: 3987568703038596967, guid: d7a69120b3e806c44a0e9929e9b9acca, type: 3}
 --- !u!4 &53825266
 Transform:
   m_ObjectHideFlags: 0
@@ -804,7 +806,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -30
+  m_SortingOrder: -850
   m_Sprite: {fileID: 21300000, guid: 60e6bd0611eff5b4b9177cb6b793d381, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -14,7 +14,9 @@ namespace Assets.CoreGame.Scripts.Controllers
         [Header("Boundary Settings")]
         public int boundaryWidth = 7;
         public int boundaryHeight = 7;
-        public GameObject boundaryPrefab;
+        public GameObject boundaryMainFence;
+        public GameObject boundaryVerticalFence;
+        public GameObject boundaryHorizontalFence;
 
         void Awake()
         {
@@ -55,27 +57,57 @@ namespace Assets.CoreGame.Scripts.Controllers
             float halfW = (boundaryWidth - 1) * tileSize / 2f;
             float halfH = (boundaryHeight - 1) * tileSize / 2f;
 
-            for (int x = 0; x < boundaryWidth; x++)
+            for (int x = 0; x < boundaryWidth * 2 - 1; x++)
             {
-                float posX = x * tileSize - halfW;
+                float posX = x * tileSize / 2 - halfW;
 
                 Vector3 topPos = new Vector3(posX, halfH, 0f);
-                Instantiate(boundaryPrefab, topPos, Quaternion.identity, boundaryHolder.transform);
+                GameObject topMainFence = Instantiate(boundaryMainFence, topPos, Quaternion.identity, boundaryHolder.transform);
+                topMainFence.GetComponent<SpriteRenderer>().sortingOrder -= 2 * (boundaryHeight * 2 - 1);
 
                 Vector3 bottomPos = new Vector3(posX, -halfH, 0f);
-                Instantiate(boundaryPrefab, bottomPos, Quaternion.identity, boundaryHolder.transform);
+                Instantiate(boundaryMainFence, bottomPos, Quaternion.identity, boundaryHolder.transform);
+
+                if (x == 0) continue;
+
+                Vector2 topHorizontalPos = new Vector2(posX - (tileSize / 4.25f), halfH);
+                GameObject topHorizontalFence = Instantiate(boundaryHorizontalFence, topHorizontalPos, Quaternion.identity, boundaryHolder.transform);
+
+                Vector2 bottomHorizontalPos = new Vector2(posX - (tileSize / 4.25f), -halfH);
+                Instantiate(boundaryHorizontalFence, bottomHorizontalPos, Quaternion.identity, boundaryHolder.transform);
+
             }
 
-            for (int y = 1; y < boundaryHeight - 1; y++)
+            for (int y = 1; y < boundaryHeight * 1.5f - 1; y++)
             {
-                float posY = y * tileSize - halfH;
+                float posY = y * tileSize / 1.5f - halfH;
 
                 Vector3 leftPos = new Vector3(-halfW, posY, 0f);
-                Instantiate(boundaryPrefab, leftPos, Quaternion.identity, boundaryHolder.transform);
+                GameObject leftMainFence = Instantiate(boundaryMainFence, leftPos, Quaternion.identity, boundaryHolder.transform);
+                leftMainFence.GetComponent<SpriteRenderer>().sortingOrder -= 2 * y;
 
                 Vector3 rightPos = new Vector3(halfW, posY, 0f);
-                Instantiate(boundaryPrefab, rightPos, Quaternion.identity, boundaryHolder.transform);
+                GameObject rightMainFence = Instantiate(boundaryMainFence, rightPos, Quaternion.identity, boundaryHolder.transform);
+                rightMainFence.GetComponent<SpriteRenderer>().sortingOrder -= 2 * y;
+
+                Vector2 leftVerticalPos = new Vector2(-halfW, posY - (tileSize / 5f));
+                GameObject leftVerticalFence = Instantiate(boundaryVerticalFence, leftVerticalPos, Quaternion.identity, boundaryHolder.transform);
+                leftVerticalFence.GetComponent<SpriteRenderer>().sortingOrder -= 2 * y - 1;
+
+                Vector2 rightVerticalPos = new Vector2(halfW, posY - (tileSize / 5f));
+                GameObject rightVerticalFence = Instantiate(boundaryVerticalFence, rightVerticalPos, Quaternion.identity, boundaryHolder.transform);
+                rightVerticalFence.GetComponent<SpriteRenderer>().sortingOrder -= 2 * y - 1;
             }
+
+            float leftVerticalPosEndY = (boundaryHeight - 1) * tileSize - halfH - (tileSize / 5f);
+
+            Vector2 leftVerticalPosEnd = new Vector2(-halfW, leftVerticalPosEndY);
+            GameObject leftVerticalEndFence = Instantiate(boundaryVerticalFence, leftVerticalPosEnd, Quaternion.identity, boundaryHolder.transform);
+            leftVerticalEndFence.GetComponent<SpriteRenderer>().sortingOrder -= (int)(2 * (boundaryHeight * 1.5f - 2) + 1);
+
+            Vector2 rightVerticalPosEnd = new Vector2(halfW, leftVerticalPosEndY);
+            GameObject rightVerticalEndFence = Instantiate(boundaryVerticalFence, rightVerticalPosEnd, Quaternion.identity, boundaryHolder.transform);
+            rightVerticalEndFence.GetComponent<SpriteRenderer>().sortingOrder -= (int)(2 * (boundaryHeight * 1.5f - 2) + 1);
         }
 
 
@@ -172,7 +204,7 @@ namespace Assets.CoreGame.Scripts.Controllers
                 Gizmos.DrawWireCube(leftPos, new Vector3(tileSize, tileSize, 0.01f));
                 Gizmos.DrawWireCube(rightPos, new Vector3(tileSize, tileSize, 0.01f));
             }
-        } 
+        }
 #endif
     }
 }

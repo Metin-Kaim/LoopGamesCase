@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -550
   m_Sprite: {fileID: 21300000, guid: 3178a64a483bf234891839c7d9929150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -468,6 +468,7 @@ MonoBehaviour:
   smoothSpeed: 8
   initialSwordCount: 2
   swordScaleAnimationDuration: 0.5
+  scratchInterval: 0.1
 --- !u!114 &92101679730977994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,7 +963,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -550
   m_Sprite: {fileID: 21300000, guid: be3f1ef1676e59745a1689bf1d27dae5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1046,7 +1047,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -500
   m_Sprite: {fileID: 21300000, guid: 1688c5882ea73b648936decdce95ed5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
