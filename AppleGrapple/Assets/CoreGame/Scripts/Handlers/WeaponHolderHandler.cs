@@ -73,7 +73,6 @@ namespace Assets.CoreGame.Scripts.Handlers
             if (_swords.Contains(sword))
             {
                 _swords.Remove(sword);
-                PoolSignals.Instance.onReturnItemToPool?.Invoke(PoolType.Sword, sword.gameObject);
             }
         }
 
