@@ -21,7 +21,6 @@ namespace Assets.CoreGame.Scripts.Controllers
         public bool IsStopped => _isStopped;
         public LayerMask BubbleLayer => bubbleLayer;
         public LayerMask CharacterLayers => characterLayers;
-        public bool CanMove { get => _canMove; set => _canMove = value; }
 
         private void Start()
         {
@@ -79,6 +78,11 @@ namespace Assets.CoreGame.Scripts.Controllers
             SetTargetPosition(targetPos);
         }
 
+        public void SetCanMove(bool value)
+        {
+            _canMove = value;
+            _animator.SetBool("walk", value);
+        }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()

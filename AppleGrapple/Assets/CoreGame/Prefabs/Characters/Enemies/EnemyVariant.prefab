@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2075057
       objectReference: {fileID: 0}
+    - target: {fileID: 116591613860710065, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 657129121760947198, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -238,6 +242,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   visual: {fileID: 117225607492634630}
+  hitMaskTween: {fileID: 5789095489675920975}
+--- !u!114 &5789095489675920975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 113383845990101758, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+  m_PrefabInstance: {fileID: 5891884433013929137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6402635260312608591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 657129121760947198, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}

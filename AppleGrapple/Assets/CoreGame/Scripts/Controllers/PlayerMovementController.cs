@@ -14,15 +14,20 @@ namespace Assets.CoreGame.Scripts.Controllers
         private Vector2 _gameAreaBoundary;
         private bool _isLeft;
         private bool _isMoving;
+        private bool _canMove;
 
         private void Start()
         {
             _animator = GetComponent<Animator>();
             _gameAreaBoundary = (Vector2)(GameSignals.Instance.GetGameAreaBoundary?.Invoke());
+
+            SetCanMove(true);
         }
 
         private void Update()
         {
+            if (!_canMove) return;
+
             Vector2 direction = joystick.Direction;
 
             if (direction == Vector2.zero)
@@ -55,6 +60,12 @@ namespace Assets.CoreGame.Scripts.Controllers
                 Mathf.Clamp(transform.position.y, -_gameAreaBoundary.y / 2f + 1, _gameAreaBoundary.y / 2f - 1),
                 transform.position.z
             );
+        }
+
+        public void SetCanMove(bool value)
+        {
+            _canMove = value;
+            _animator.SetBool("walk", value);
         }
     }
 }

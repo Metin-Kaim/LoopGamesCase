@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy3
       objectReference: {fileID: 0}
+    - target: {fileID: 5789969788646715904, guid: d9f6ec29489bf654c890a6ef0eabfd65, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6231780431076033002, guid: d9f6ec29489bf654c890a6ef0eabfd65, type: 3}
       propertyPath: m_text
       value: Chan
