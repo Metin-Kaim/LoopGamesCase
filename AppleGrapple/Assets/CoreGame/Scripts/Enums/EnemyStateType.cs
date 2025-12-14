@@ -5,5 +5,6 @@
         Wander,
         Escape,
         Chase,
+        Idle,
     }
 }

@@ -60,9 +60,6 @@ namespace Assets.CoreGame.Scripts.StateMachine.Enemy
                 SetEscapePosition();
             }
         }
-        public override void Exit()
-        { }
-
         private void SetEscapePosition()
         {
             Vector3 directionAwayFromTarget = (enemyMovementController.transform.position - _target.transform.position).normalized;

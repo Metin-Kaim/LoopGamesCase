@@ -14,7 +14,6 @@ namespace Assets.CoreGame.Scripts.Controllers
         private Vector2 _targetPos;
         private float _stoppingDistance;
         private bool _isStopped;
-        private Vector2 _gameAreaBoundary;
         private Animator _animator;
         private bool _canMove;
 
@@ -26,7 +25,6 @@ namespace Assets.CoreGame.Scripts.Controllers
         {
             _animator = GetComponent<Animator>();
             SetTargetPosition(transform.position);
-            _gameAreaBoundary = GameSignals.Instance.GetGameAreaBoundary.Invoke();
             _canMove = true;
         }
 
@@ -59,8 +57,7 @@ namespace Assets.CoreGame.Scripts.Controllers
 
         public void SetTargetPosition(Vector2 newTargetPos, float stoppingDistance = 0.1f)
         {
-            newTargetPos.x = Mathf.Clamp(newTargetPos.x, -_gameAreaBoundary.x / 2f + 1, _gameAreaBoundary.x / 2f - 1);
-            newTargetPos.y = Mathf.Clamp(newTargetPos.y, -_gameAreaBoundary.y / 2f + 1, _gameAreaBoundary.y / 2f - 1);
+            newTargetPos = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(newTargetPos);
 
             _targetPos = newTargetPos;
             _stoppingDistance = stoppingDistance;
@@ -72,8 +69,7 @@ namespace Assets.CoreGame.Scripts.Controllers
             float randomDistance = Random.Range(2f, 5f);
             Vector2 targetPos = (randomDirection * randomDistance) + (Vector2)transform.position;
 
-            targetPos.x = Mathf.Clamp(targetPos.x, -_gameAreaBoundary.x / 2f + 1, _gameAreaBoundary.x / 2f - 1);
-            targetPos.y = Mathf.Clamp(targetPos.y, -_gameAreaBoundary.y / 2f + 1, _gameAreaBoundary.y / 2f - 1);
+            targetPos = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(targetPos);
 
             SetTargetPosition(targetPos);
         }

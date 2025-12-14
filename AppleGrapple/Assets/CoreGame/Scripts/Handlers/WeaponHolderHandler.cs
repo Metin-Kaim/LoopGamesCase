@@ -1,9 +1,7 @@
 using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Signals;
 using DG.Tweening;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.CoreGame.Scripts.Handlers
@@ -19,12 +17,18 @@ namespace Assets.CoreGame.Scripts.Handlers
         public short initialSwordCount = 2;
         public float swordScaleAnimationDuration = 0.5f;
         public float scratchInterval = 0.1f;
+        private DOTweenAnimation _rotateTween;
 
         private List<SwordHandler> _swords = new List<SwordHandler>();
         private float _scratchTimer = 0f;
         private byte _swordSwitchKey = 1;
 
         public int SwordCount => _swords.Count;
+
+        private void Awake()
+        {
+            _rotateTween = GetComponentInChildren<DOTweenAnimation>();
+        }
 
         private void Start()
         {
@@ -34,10 +38,11 @@ namespace Assets.CoreGame.Scripts.Handlers
             }
         }
 
-        public void SwordBubbleCollected(GameObject bubble)
+        public void SwordBubbleCollected(GameObject bubble, bool isFake = false)
         {
             PoolSignals.Instance.onReturnItemToPool.Invoke(PoolType.SwordBubble, bubble);
-            IncreaseSword();
+            if (!isFake)
+                IncreaseSword();
         }
 
         void Update()
@@ -54,7 +59,7 @@ namespace Assets.CoreGame.Scripts.Handlers
         }
         private void ScratchCard()
         {
-            ScratchSignals.Instance.OnScratchAtPosition.Invoke(transform.position);
+            ScratchSignals.Instance.OnScratchAtPosition?.Invoke(transform.position);
 
             for (int i = 0; i < _swords.Count; i++)
             {
@@ -64,7 +69,7 @@ namespace Assets.CoreGame.Scripts.Handlers
                 }
                 SwordHandler sword = _swords[i];
 
-                ScratchSignals.Instance.OnScratchAtPosition.Invoke(sword.transform.position);
+                ScratchSignals.Instance.OnScratchAtPosition?.Invoke(sword.transform.position);
             }
             _swordSwitchKey %= 2;
             _swordSwitchKey++;
@@ -129,9 +134,8 @@ namespace Assets.CoreGame.Scripts.Handlers
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (_swords.Count > 8) return;
             if (collision.CompareTag("SwordBubble"))
-                SwordBubbleCollected(collision.gameObject);
+                SwordBubbleCollected(collision.gameObject, _swords.Count > 8);
         }
 
         public void ClearSwords()
@@ -142,6 +146,11 @@ namespace Assets.CoreGame.Scripts.Handlers
                 DecreaseSword(sword);
                 sword.ThrowItAway();
             }
+        }
+
+        public void StopRotation()
+        {
+            _rotateTween.DOPause();
         }
     }
 }

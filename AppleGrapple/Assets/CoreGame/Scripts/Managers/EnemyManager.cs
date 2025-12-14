@@ -18,6 +18,12 @@ namespace Assets.CoreGame.Scripts.Managers
             _enemyMovementController = GetComponent<EnemyMovementController>();
         }
 
+        protected override void OnGameEnded()
+        {
+            base.OnGameEnded();
+            _enemyMovementController.SetCanMove(false);
+        }
+
         protected override void HitReaction(Vector3 hitDirection)
         {
             _enemyMovementController.SetCanMove(false);
@@ -27,6 +33,7 @@ namespace Assets.CoreGame.Scripts.Managers
         protected override void OnDie()
         {
             base.OnDie();
+
             transform.DOScale(0.2f, 1f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 gameObject.SetActive(false);
@@ -38,6 +45,8 @@ namespace Assets.CoreGame.Scripts.Managers
                 Vector2 rndPos = Random.insideUnitCircle + (Vector2)transform.position;
                 bubble.transform.position = rndPos;
             }
+
+            GameSignals.Instance.onEnemyDied.Invoke(gameObject);
         }
     }
 }

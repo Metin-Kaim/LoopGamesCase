@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: middleLayerAnimationDuration
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4622058389532107006, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: scratchInterval
+      value: 0.04
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 988700811322934585, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
     - {fileID: 5289253481090976018, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}

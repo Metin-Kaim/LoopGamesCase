@@ -11,7 +11,6 @@ namespace Assets.CoreGame.Scripts.Controllers
         [SerializeField] private Transform visual;
 
         private Animator _animator;
-        private Vector2 _gameAreaBoundary;
         private bool _isLeft;
         private bool _isMoving;
         private bool _canMove;
@@ -19,8 +18,6 @@ namespace Assets.CoreGame.Scripts.Controllers
         private void Start()
         {
             _animator = GetComponent<Animator>();
-            _gameAreaBoundary = (Vector2)(GameSignals.Instance.GetGameAreaBoundary?.Invoke());
-
             SetCanMove(true);
         }
 
@@ -55,11 +52,7 @@ namespace Assets.CoreGame.Scripts.Controllers
 
             transform.position += new Vector3(direction.x, direction.y, 0) * moveSpeed * Time.deltaTime;
 
-            transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, -_gameAreaBoundary.x / 2f + 1, _gameAreaBoundary.x / 2f - 1),
-                Mathf.Clamp(transform.position.y, -_gameAreaBoundary.y / 2f + 1, _gameAreaBoundary.y / 2f - 1),
-                transform.position.z
-            );
+            transform.position = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(transform.position);
         }
 
         public void SetCanMove(bool value)

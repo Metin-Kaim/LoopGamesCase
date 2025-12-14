@@ -31,11 +31,13 @@ public class ErasableGround : MonoBehaviour
     private void OnEnable()
     {
         ScratchSignals.Instance.OnScratchAtPosition += EraseAtWorldPosition;
+        GameSignals.Instance.onGameEnded += () => ScratchSignals.Instance.OnScratchAtPosition = null;
     }
 
     private void OnDisable()
     {
         ScratchSignals.Instance.OnScratchAtPosition -= EraseAtWorldPosition;
+        GameSignals.Instance.onGameEnded -= () => ScratchSignals.Instance.OnScratchAtPosition = null;
     }
 
     void Start()

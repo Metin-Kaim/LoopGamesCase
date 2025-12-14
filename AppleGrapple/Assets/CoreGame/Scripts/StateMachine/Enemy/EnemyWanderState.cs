@@ -44,10 +44,6 @@ namespace Assets.CoreGame.Scripts.StateMachine.Enemy
             }
         }
 
-
-        public override void Exit()
-        { }
-
         private void CheckForEnemies()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(enemyMovementController.transform.position, detectionRadius, enemyMovementController.CharacterLayers);

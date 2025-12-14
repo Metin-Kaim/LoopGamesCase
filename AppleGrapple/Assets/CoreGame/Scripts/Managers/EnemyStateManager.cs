@@ -2,6 +2,7 @@
 using Assets.CoreGame.Scripts.Controllers;
 using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Handlers;
+using Assets.CoreGame.Scripts.Signals;
 using Assets.CoreGame.Scripts.StateMachine.Enemy;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Assets.CoreGame.Scripts.Managers
         [SerializeField] private WeaponHolderHandler weaponHolderHandler;
 
         private AbsEnemyStateMachine _currentState;
+        private EnemyIdleState _idleState;
         private EnemyWanderState _wanderState;
         private EnemyEscapeState _escapeState;
         private EnemyChaseState _chaseState;
@@ -31,13 +33,24 @@ namespace Assets.CoreGame.Scripts.Managers
             _wanderState = new EnemyWanderState(this, enemyMovementController, weaponHolderHandler);
             _escapeState = new EnemyEscapeState(this, enemyMovementController, weaponHolderHandler);
             _chaseState = new EnemyChaseState(this, enemyMovementController, weaponHolderHandler);
+            _idleState = new EnemyIdleState(this, enemyMovementController, weaponHolderHandler);
 
             _stateDictionary = new Dictionary<EnemyStateType, AbsEnemyStateMachine>
             {
                 { EnemyStateType.Wander, _wanderState },
                 { EnemyStateType.Escape, _escapeState },
-                { EnemyStateType.Chase, _chaseState }
+                { EnemyStateType.Chase, _chaseState },
+                { EnemyStateType.Idle, _idleState },
             };
+        }
+
+        private void OnEnable()
+        {
+            GameSignals.Instance.onGameEnded += () => ChangeState(EnemyStateType.Idle);
+        }
+        private void OnDisable()
+        {
+            GameSignals.Instance.onGameEnded -= () => ChangeState(EnemyStateType.Idle);
         }
 
         private IEnumerator Start()
@@ -55,7 +68,6 @@ namespace Assets.CoreGame.Scripts.Managers
         {
             if (_stateDictionary.TryGetValue(stateType, out var nextState))
             {
-                _currentState?.Exit();
                 _currentState = nextState;
                 currentStateType = stateType;
                 _currentState.Enter();

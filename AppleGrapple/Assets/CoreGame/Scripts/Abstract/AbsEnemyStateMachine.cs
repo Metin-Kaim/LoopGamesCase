@@ -19,7 +19,6 @@ namespace Assets.CoreGame.Scripts.Abstract
 
         public abstract void Enter();
         public abstract void Tick();
-        public abstract void Exit();
 
         public abstract void OnDrawGizmos();
     }

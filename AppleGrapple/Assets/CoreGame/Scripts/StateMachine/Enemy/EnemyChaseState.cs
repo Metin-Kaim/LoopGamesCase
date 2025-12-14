@@ -62,8 +62,6 @@ namespace Assets.CoreGame.Scripts.StateMachine.Enemy
                 enemyStateManager.ChangeState(EnemyStateType.Wander);
             }
         }
-        public override void Exit()
-        { }
 
         public override void OnDrawGizmos()
         {

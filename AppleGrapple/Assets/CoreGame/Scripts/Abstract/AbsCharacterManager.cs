@@ -1,5 +1,6 @@
 ﻿using Assets.CoreGame.Scripts.Controllers;
 using Assets.CoreGame.Scripts.Handlers;
+using Assets.CoreGame.Scripts.Signals;
 using DG.Tweening;
 using System;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace Assets.CoreGame.Scripts.Abstract
 {
     public abstract class AbsCharacterManager : MonoBehaviour
     {
-        [SerializeField] protected byte health = 3;
         [SerializeField] protected Transform visual;
         [SerializeField] private DOTweenAnimation hitMaskTween;
 
@@ -26,7 +26,23 @@ namespace Assets.CoreGame.Scripts.Abstract
             _weaponHolderHandler = GetComponent<WeaponHolderHandler>();
             collider = GetComponent<Collider2D>();
         }
+        private void OnEnable()
+        {
+            GameSignals.Instance.onGameEnded += OnGameEnded;
 
+        }
+
+        protected virtual void OnGameEnded()
+        {
+            _weaponHolderHandler.StopRotation();
+            collider.enabled = false;
+        }
+
+        private void OnDisable()
+        {
+            GameSignals.Instance.onGameEnded -= OnGameEnded;
+
+        }
         public virtual void TakeDamage(Transform hitPoint)
         {
             healthController.DecreaseHealth();

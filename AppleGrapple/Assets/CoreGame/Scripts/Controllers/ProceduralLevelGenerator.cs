@@ -28,6 +28,8 @@ namespace Assets.CoreGame.Scripts.Controllers
             GameSignals.Instance.GetGameAreaBoundary += OnGetGameAreaBoundary;
             GameSignals.Instance.GetGameArea += OnGetGameArea;
             GameSignals.Instance.GetTileSize += OnGetTileSize;
+            GameSignals.Instance.GetRandomPointInGameBoundary += OnGetRandomPointInGameBoundary;
+            GameSignals.Instance.SetThePositionWithinTheBoundaries += OnSetThePositionWithinTheBoundaries;
         }
         private float OnGetTileSize()
         {
@@ -41,11 +43,33 @@ namespace Assets.CoreGame.Scripts.Controllers
         {
             return new Vector2(boundaryWidth * tileSize, boundaryHeight * tileSize);
         }
+        private Vector2 OnGetRandomPointInGameBoundary()
+        {
+            float width = boundaryWidth * tileSize;
+            float height = boundaryHeight * tileSize;
+
+            float posX = Random.Range(-width / 2f + 2, width / 2f - 2);
+            float posY = Random.Range(-height / 2f + 2, height / 2f - 2);
+
+            return new Vector2(posX, posY);
+        }
+        private Vector2 OnSetThePositionWithinTheBoundaries(Vector2 newTargetPos)
+        {
+            float width = boundaryWidth * tileSize;
+            float height = boundaryHeight * tileSize;
+
+            newTargetPos.x = Mathf.Clamp(newTargetPos.x, -width / 2f + 1, width / 2f - 1);
+            newTargetPos.y = Mathf.Clamp(newTargetPos.y, -height / 2f + 1, height / 2f - 1);
+
+            return newTargetPos;
+        }
         private void OnDisable()
         {
             GameSignals.Instance.GetGameAreaBoundary -= OnGetGameAreaBoundary;
             GameSignals.Instance.GetGameArea -= OnGetGameArea;
             GameSignals.Instance.GetTileSize -= OnGetTileSize;
+            GameSignals.Instance.GetRandomPointInGameBoundary -= OnGetRandomPointInGameBoundary;
+            GameSignals.Instance.SetThePositionWithinTheBoundaries -= OnSetThePositionWithinTheBoundaries;
         }
 
         private void GenerateBoundary()
@@ -109,7 +133,6 @@ namespace Assets.CoreGame.Scripts.Controllers
             GameObject rightVerticalEndFence = Instantiate(boundaryVerticalFence, rightVerticalPosEnd, Quaternion.identity, boundaryHolder.transform);
             rightVerticalEndFence.GetComponent<SpriteRenderer>().sortingOrder -= (int)(2 * (boundaryHeight * 1.5f - 2) + 1);
         }
-
 
         void GenerateGround()
         {
