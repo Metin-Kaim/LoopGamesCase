@@ -3,7 +3,6 @@
     public enum PoolType : byte
     {
         Sword,
-        SwordHit,
-
+        SwordHitVFX,
     }
 }

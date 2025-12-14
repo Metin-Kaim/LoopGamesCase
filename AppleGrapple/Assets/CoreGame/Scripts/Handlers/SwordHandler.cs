@@ -8,9 +8,12 @@ namespace Assets.CoreGame.Scripts.Handlers
 {
     public class SwordHandler : MonoBehaviour
     {
+        private static int swordIndex = 0;
+
         [SerializeField] private float throwForce = 5f;
         [SerializeField] private float throwScaleValue = .9f;
 
+        int _swordIndex;
         WeaponHolderHandler _weaponHolder;
         Collider2D _weaponCollider;
 
@@ -27,6 +30,8 @@ namespace Assets.CoreGame.Scripts.Handlers
         public void Init(WeaponHolderHandler weaponHolder)
         {
             _weaponHolder = weaponHolder;
+            _swordIndex = swordIndex;
+            swordIndex++;
         }
 
         public void ThrowItAway(Vector2 direction)
@@ -55,11 +60,17 @@ namespace Assets.CoreGame.Scripts.Handlers
                 if (_weaponHolder.CompareTag("Player"))
                 {
                     CameraSignals.Instance.onCameraShake?.Invoke();
+                }
 
+                if (_swordIndex > collision.GetComponent<SwordHandler>()._swordIndex)
+                {
+                    GameObject swordHitVFX = PoolSignals.Instance.onGetItemFromPool.Invoke(PoolType.SwordHitVFX);
+                    swordHitVFX.transform.position = collision.transform.position;
                 }
 
                 _weaponHolder.DecreaseSword(this);
                 ThrowItAway((collision.transform.position - transform.position).normalized);
+
             }
             else if (collision.CompareTag("Enemy") || collision.CompareTag("Player"))
             {
