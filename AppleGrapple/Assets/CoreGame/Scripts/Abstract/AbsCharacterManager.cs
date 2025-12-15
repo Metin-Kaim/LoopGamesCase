@@ -9,7 +9,6 @@ namespace Assets.CoreGame.Scripts.Abstract
 {
     public abstract class AbsCharacterManager : MonoBehaviour
     {
-        [SerializeField] protected Transform visual;
         [SerializeField] private DOTweenAnimation hitMaskTween;
 
         protected Collider2D collider;
@@ -45,7 +44,7 @@ namespace Assets.CoreGame.Scripts.Abstract
         {
             healthController.DecreaseHealth();
 
-            Vector3 hitDirection = (visual.position - hitPoint.position).normalized;
+            Vector3 hitDirection = (transform.position - hitPoint.position).normalized;
             HitReaction(hitDirection);
 
             if (healthController.IsDead)
@@ -71,7 +70,8 @@ namespace Assets.CoreGame.Scripts.Abstract
             foreach (var spriteRenderer in _spriteRenderers)
                 spriteRenderer.DOKill(true);
 
-            transform.DOMove(visual.position + hitDirection * .8f, 0.2f).SetEase(Ease.OutQuad).OnComplete(() =>
+            Vector2 targetPos = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(transform.position + hitDirection * .8f);
+            transform.DOMove(targetPos, 0.2f).SetEase(Ease.OutQuad).OnComplete(() =>
             {
                 onComplete?.Invoke();
             });
