@@ -387,7 +387,6 @@ GameObject:
   - component: {fileID: 42474976411859428}
   - component: {fileID: 7681392544420208361}
   - component: {fileID: 988700811322934585}
-  - component: {fileID: 5289253481090976018}
   - component: {fileID: 6380178012447720835}
   - component: {fileID: 4622058389532107006}
   - component: {fileID: 92101679730977994}
@@ -494,18 +493,6 @@ MonoBehaviour:
   joystick: {fileID: 0}
   moveSpeed: 3
   visual: {fileID: 5792849292995558583}
---- !u!114 &5289253481090976018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783229100411088572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f0da36a4d60424c9f769490972d5a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &6380178012447720835
 Animator:
   serializedVersion: 5
@@ -557,7 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b9da2ccbb319c44b00d85adce2a76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 255
   visual: {fileID: 5792849292995558583}
   hitMaskTween: {fileID: 113383845990101758}
 --- !u!114 &4079321695883449601

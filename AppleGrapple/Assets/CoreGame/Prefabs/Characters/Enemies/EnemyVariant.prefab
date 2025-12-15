@@ -175,9 +175,6 @@ PrefabInstance:
       addedObject: {fileID: 1122930605495432956}
     - targetCorrespondingSourceObject: {fileID: 1783229100411088572, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6137218723510024396}
-    - targetCorrespondingSourceObject: {fileID: 1783229100411088572, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6568582528349408945}
   m_SourcePrefab: {fileID: 100100000, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
 --- !u!4 &117225607492634630 stripped
@@ -236,18 +233,6 @@ MonoBehaviour:
   currentStateType: 0
   enemyMovementController: {fileID: 8097723177702972203}
   weaponHolderHandler: {fileID: 1288297984858920015}
---- !u!114 &6137218723510024396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294932198549789197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6792a68e4363fad419d95ff9e87bf497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6568582528349408945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bbae35372d49f4fbdec80644e523c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   visual: {fileID: 117225607492634630}
   hitMaskTween: {fileID: 5789095489675920975}
 --- !u!114 &5789095489675920975 stripped

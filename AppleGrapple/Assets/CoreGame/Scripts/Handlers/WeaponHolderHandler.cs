@@ -135,7 +135,13 @@ namespace Assets.CoreGame.Scripts.Handlers
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("SwordBubble"))
+            {
                 SwordBubbleCollected(collision.gameObject, _swords.Count > 8);
+                if (CompareTag("Player"))
+                {
+                    SoundSignals.Instance.onPlaySoundByType.Invoke(SoundType.Bubble);
+                }
+            }
         }
 
         public void ClearSwords()

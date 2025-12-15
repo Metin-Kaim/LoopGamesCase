@@ -37,7 +37,6 @@ namespace Assets.CoreGame.Scripts.Handlers
         public void ThrowItAway()
         {
             _weaponCollider.enabled = false;
-            // Detach from weapon holder and move it towards the direction with DOTween
             transform.parent = null;
 
             transform.DOLocalMove(transform.up * throwForce, 2f).OnComplete(() =>
@@ -60,6 +59,7 @@ namespace Assets.CoreGame.Scripts.Handlers
                 if (_weaponHolder.CompareTag("Player"))
                 {
                     CameraSignals.Instance.onCameraShake?.Invoke();
+                    SoundSignals.Instance.onPlaySoundByType.Invoke(SoundType.SwordHit);
                 }
 
                 if (_swordIndex > collision.GetComponent<SwordHandler>()._swordIndex)
@@ -79,6 +79,7 @@ namespace Assets.CoreGame.Scripts.Handlers
                 if (_weaponHolder.CompareTag("Enemy") && collision.CompareTag("Player") || _weaponHolder.CompareTag("Player") && collision.CompareTag("Enemy"))
                 {
                     CameraSignals.Instance.onCameraShake?.Invoke();
+                    SoundSignals.Instance.onPlaySoundByType.Invoke(SoundType.CharacterHit);
                 }
 
                 collision.GetComponent<AbsCharacterManager>().TakeDamage(transform);

@@ -2,7 +2,6 @@
 using Assets.CoreGame.Scripts.Handlers;
 using Assets.CoreGame.Scripts.Signals;
 using DG.Tweening;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,7 +28,6 @@ namespace Assets.CoreGame.Scripts.Abstract
         private void OnEnable()
         {
             GameSignals.Instance.onGameEnded += OnGameEnded;
-
         }
 
         protected virtual void OnGameEnded()
