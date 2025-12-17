@@ -8152,10 +8152,6 @@
                 "excluded": true
             },
             {
-                "name": "DG.Tweening.Core.Easing.Bounce",
-                "excluded": true
-            },
-            {
                 "name": "DG.Tweening.Core.Easing.EaseCurve",
                 "excluded": true
             },
@@ -8405,6 +8401,14 @@
             },
             {
                 "name": "FixedJoystick",
+                "excluded": true
+            },
+            {
+                "name": "pc.Debugger.Components.EditorCamera",
+                "excluded": true
+            },
+            {
+                "name": "pc.Debugger.Components.EditorGUI",
                 "excluded": true
             }
         ],
@@ -19469,7 +19473,7 @@
                     },
                     {
                         "name": "pressedColor#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "pressedColor#set",
@@ -19477,7 +19481,7 @@
                     },
                     {
                         "name": "selectedColor#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "selectedColor#set",
@@ -19553,7 +19557,7 @@
                     },
                     {
                         "name": "mode#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "mode#set",
@@ -19657,7 +19661,7 @@
                     },
                     {
                         "name": "pressedSprite#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "pressedSprite#set",
@@ -19665,7 +19669,7 @@
                     },
                     {
                         "name": "selectedSprite#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "selectedSprite#set",
@@ -24513,11 +24517,11 @@
                     },
                     {
                         "name": "OnDisable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RemoveCanvasGroup",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDidApplyAnimationProperties",
@@ -33443,7 +33447,7 @@
                     },
                     {
                         "name": "OnDisable$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDie",
@@ -34343,7 +34347,7 @@
                     },
                     {
                         "name": "pressedTrigger#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "pressedTrigger#set",
@@ -34351,7 +34355,7 @@
                     },
                     {
                         "name": "selectedTrigger#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "selectedTrigger#set",
@@ -34397,7 +34401,7 @@
                     },
                     {
                         "name": "OnPointerClick",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnSubmit",
@@ -34405,7 +34409,7 @@
                     },
                     {
                         "name": "Press",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnFinishSubmit",
@@ -34836,6 +34840,34 @@
                     {
                         "name": "ctor",
                         "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Assets.CoreGame.Scripts.Controllers.PlayableController",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GoToStore",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.Core.Easing.Bounce",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "EaseIn",
+                        "excluded": false
+                    },
+                    {
+                        "name": "EaseOut",
+                        "excluded": false
+                    },
+                    {
+                        "name": "EaseInOut",
+                        "excluded": true
                     }
                 ]
             }
