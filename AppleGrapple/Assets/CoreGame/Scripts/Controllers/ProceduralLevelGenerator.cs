@@ -25,11 +25,11 @@ namespace Assets.CoreGame.Scripts.Controllers
         }
         private void OnEnable()
         {
-            GameSignals.Instance.GetGameAreaBoundary += OnGetGameAreaBoundary;
-            GameSignals.Instance.GetGameArea += OnGetGameArea;
-            GameSignals.Instance.GetTileSize += OnGetTileSize;
-            GameSignals.Instance.GetRandomPointInGameBoundary += OnGetRandomPointInGameBoundary;
-            GameSignals.Instance.SetThePositionWithinTheBoundaries += OnSetThePositionWithinTheBoundaries;
+            GameSignals.Instance.onGetGameAreaBoundary += OnGetGameAreaBoundary;
+            GameSignals.Instance.onGetGameArea += OnGetGameArea;
+            GameSignals.Instance.onGetTileSize += OnGetTileSize;
+            GameSignals.Instance.onGetRandomPointInGameBoundary += OnGetRandomPointInGameBoundary;
+            GameSignals.Instance.onSetThePositionWithinTheBoundaries += OnSetThePositionWithinTheBoundaries;
         }
         private float OnGetTileSize()
         {
@@ -65,11 +65,11 @@ namespace Assets.CoreGame.Scripts.Controllers
         }
         private void OnDisable()
         {
-            GameSignals.Instance.GetGameAreaBoundary -= OnGetGameAreaBoundary;
-            GameSignals.Instance.GetGameArea -= OnGetGameArea;
-            GameSignals.Instance.GetTileSize -= OnGetTileSize;
-            GameSignals.Instance.GetRandomPointInGameBoundary -= OnGetRandomPointInGameBoundary;
-            GameSignals.Instance.SetThePositionWithinTheBoundaries -= OnSetThePositionWithinTheBoundaries;
+            GameSignals.Instance.onGetGameAreaBoundary -= OnGetGameAreaBoundary;
+            GameSignals.Instance.onGetGameArea -= OnGetGameArea;
+            GameSignals.Instance.onGetTileSize -= OnGetTileSize;
+            GameSignals.Instance.onGetRandomPointInGameBoundary -= OnGetRandomPointInGameBoundary;
+            GameSignals.Instance.onSetThePositionWithinTheBoundaries -= OnSetThePositionWithinTheBoundaries;
         }
 
         private void GenerateBoundary()

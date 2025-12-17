@@ -856,6 +856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &536354677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  m_PrefabInstance: {fileID: 155592006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &570085485
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +984,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endCard: {fileID: 134438695}
+  showJoystick: 0
+  joystickImages:
+  - {fileID: 536354677}
+  - {fileID: 1747589288}
 --- !u!1 &608316977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,10 +1181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureSize: 712
-  eraseRadius: 0.5
+  eraseRadius: 0.6
   eraseStrength: 1
   groundMaterial: {fileID: 2100000, guid: 4d1c84bbf9ad3054086b699c9053b649, type: 2}
-  groundTexture: {fileID: 2800000, guid: 85ac55597b97403c82fc6601a93cf241, type: 3}
+  groundTexture: {fileID: 2800000, guid: 60e6bd0611eff5b4b9177cb6b793d381, type: 3}
   groundSize: {x: 4, y: 8}
   autoDetectSize: 1
   textureTiling: {x: 10, y: 10}
@@ -1412,6 +1427,7 @@ GameObject:
   - component: {fileID: 1603819024}
   - component: {fileID: 1603819025}
   - component: {fileID: 1603819026}
+  - component: {fileID: 1603819027}
   m_Layer: 0
   m_Name: Signals
   m_TagString: Untagged
@@ -1492,6 +1508,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf4e5c7cb472c045b6b83ba646816ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1603819027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603819019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1d8951c62b696409c6e3f197e7ebf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1747589288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  m_PrefabInstance: {fileID: 155592006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1798815528
@@ -1577,6 +1616,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92101679730977994, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: closeDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 558330785887057243, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: m_text
+      value: Charlie
+      objectReference: {fileID: 0}
+    - target: {fileID: 558330785887057243, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: m_fontSize
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 657129121760947198, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1632,6 +1683,14 @@ PrefabInstance:
     - target: {fileID: 4622058389532107006, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
       propertyPath: initialSwordCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622058389532107006, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: maxCollectableSwordCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622058389532107006, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: maxScratchableSwordCount
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

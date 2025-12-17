@@ -52,7 +52,7 @@ namespace Assets.CoreGame.Scripts.Controllers
 
             transform.position += new Vector3(direction.x, direction.y, 0) * moveSpeed * Time.deltaTime;
 
-            transform.position = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(transform.position);
+            transform.position = GameSignals.Instance.onSetThePositionWithinTheBoundaries.Invoke(transform.position);
         }
 
         public void SetCanMove(bool value)

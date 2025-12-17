@@ -48,8 +48,8 @@ public class ErasableGround : MonoBehaviour
         if (textureTiling.x != 0 && textureTiling.y != 0)
             groundMaterial.SetVector("_TextureTiling", textureTiling);
 
-        Vector2 gameBoundary = GameSignals.Instance.GetGameArea.Invoke();
-        float tileSize = GameSignals.Instance.GetTileSize.Invoke();
+        Vector2 gameBoundary = GameSignals.Instance.onGetGameArea.Invoke();
+        float tileSize = GameSignals.Instance.onGetTileSize.Invoke();
 
         float scaleX = gameBoundary.x * (tileSize * 100) / groundTexture.width;
         float scaleY = gameBoundary.y * (tileSize * 100) / groundTexture.height;

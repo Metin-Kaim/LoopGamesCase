@@ -8,14 +8,14 @@ namespace Assets.CoreGame.Scripts.Signals
     {
         public static GameSignals Instance;
 
-        public Func<Vector2> GetGameArea;
-        public Func<float> GetTileSize;
-        public Func<Vector2> GetGameAreaBoundary;
-        public Func<Vector2> GetRandomPointInGameBoundary;
+        public Func<Vector2> onGetGameArea;
+        public Func<float> onGetTileSize;
+        public Func<Vector2> onGetGameAreaBoundary;
+        public Func<Vector2> onGetRandomPointInGameBoundary;
         public UnityAction onGameEnded;
         public UnityAction<GameObject> onEnemyDied;
 
-        public Func<Vector2, Vector2> SetThePositionWithinTheBoundaries { get; internal set; }
+        public Func<Vector2, Vector2> onSetThePositionWithinTheBoundaries;
 
         private void Awake()
         {

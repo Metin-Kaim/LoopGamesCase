@@ -11,18 +11,20 @@ namespace Assets.CoreGame.Scripts.Abstract
     {
         [SerializeField] private DOTweenAnimation hitMaskTween;
 
-        protected Collider2D collider;
         protected HealthController healthController;
 
+        private Collider2D _collider;
         private SpriteRenderer[] _spriteRenderers;
         private WeaponHolderHandler _weaponHolderHandler;
+        private SwordBubbleTriggerController _swordBubbleTriggerController;
 
         protected virtual void Awake()
         {
             _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
             healthController = GetComponent<HealthController>();
             _weaponHolderHandler = GetComponent<WeaponHolderHandler>();
-            collider = GetComponent<Collider2D>();
+            _collider = GetComponent<Collider2D>();
+            _swordBubbleTriggerController = GetComponentInChildren<SwordBubbleTriggerController>();
         }
         private void OnEnable()
         {
@@ -32,7 +34,7 @@ namespace Assets.CoreGame.Scripts.Abstract
         protected virtual void OnGameEnded()
         {
             _weaponHolderHandler.StopRotation();
-            collider.enabled = false;
+            _collider.enabled = false;
         }
 
         private void OnDisable()
@@ -53,7 +55,8 @@ namespace Assets.CoreGame.Scripts.Abstract
 
         protected virtual void OnDie()
         {
-            collider.enabled = false;
+            _collider.enabled = false;
+            _swordBubbleTriggerController.gameObject.SetActive(false);
             _weaponHolderHandler.ClearSwords();
         }
 
@@ -70,7 +73,7 @@ namespace Assets.CoreGame.Scripts.Abstract
             foreach (var spriteRenderer in _spriteRenderers)
                 spriteRenderer.DOKill(true);
 
-            Vector2 targetPos = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(transform.position + hitDirection * .8f);
+            Vector2 targetPos = GameSignals.Instance.onSetThePositionWithinTheBoundaries.Invoke(transform.position + hitDirection * .8f);
             transform.DOMove(targetPos, 0.2f).SetEase(Ease.OutQuad).OnComplete(() =>
             {
                 onComplete?.Invoke();

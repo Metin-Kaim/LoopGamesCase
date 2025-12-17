@@ -25,7 +25,7 @@ namespace Assets.CoreGame.Scripts.Controllers
                 float waitTime = Random.Range(.2f, 3f);
                 yield return new WaitForSeconds(waitTime);
 
-                Vector2 spawnPos = GameSignals.Instance.GetRandomPointInGameBoundary.Invoke();
+                Vector2 spawnPos = GameSignals.Instance.onGetRandomPointInGameBoundary.Invoke();
 
                 GameObject bubble = PoolSignals.Instance.onGetItemFromPool.Invoke(PoolType.SwordBubble);
                 bubble.transform.position = spawnPos;

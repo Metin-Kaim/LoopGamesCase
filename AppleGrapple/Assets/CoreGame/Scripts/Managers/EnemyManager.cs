@@ -34,7 +34,7 @@ namespace Assets.CoreGame.Scripts.Managers
         {
             base.OnDie();
 
-            transform.DOScale(0.2f, 1f).SetEase(Ease.InBack).OnComplete(() =>
+            transform.DOScale(0.2f, .5f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 gameObject.SetActive(false);
             });

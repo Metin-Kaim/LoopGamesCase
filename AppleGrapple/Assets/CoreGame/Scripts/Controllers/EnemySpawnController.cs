@@ -27,7 +27,14 @@ namespace Assets.CoreGame.Scripts.Controllers
             {
                 for (int i = 0; i < enemyInfo.count; i++)
                 {
-                    Vector2 rndPos = GameSignals.Instance.GetRandomPointInGameBoundary.Invoke();
+                    Vector2 rndPos;
+                    do
+                    {
+                        rndPos = GameSignals.Instance.onGetRandomPointInGameBoundary.Invoke();
+
+                    } while (PlayerSignals.Instance.onGetIsPointCloseToThePlayer.Invoke(rndPos));
+
+
                     GameObject enemy = Instantiate(enemyInfo.enemyPrefab, rndPos, Quaternion.identity, transform);
 
                     _enemyList.Add(enemy);

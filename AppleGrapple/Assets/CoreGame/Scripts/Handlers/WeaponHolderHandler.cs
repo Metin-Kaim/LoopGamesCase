@@ -17,8 +17,12 @@ namespace Assets.CoreGame.Scripts.Handlers
         public short initialSwordCount = 2;
         public float swordScaleAnimationDuration = 0.5f;
         public float scratchInterval = 0.1f;
-        private DOTweenAnimation _rotateTween;
+        [Range(1, 20)] public byte maxCollectableSwordCount = 10;
+        [Range(1, 20)] public byte maxScratchableSwordCount = 8;
+        [Range(1, 10)] public byte scratchableSwordInterval = 3;
 
+
+        private DOTweenAnimation _rotateTween;
         private List<SwordHandler> _swords = new List<SwordHandler>();
         private float _scratchTimer = 0f;
         private byte _swordSwitchKey = 1;
@@ -38,9 +42,15 @@ namespace Assets.CoreGame.Scripts.Handlers
             }
         }
 
-        public void SwordBubbleCollected(GameObject bubble, bool isFake = false)
+        public void SwordBubbleCollected()
         {
-            PoolSignals.Instance.onReturnItemToPool.Invoke(PoolType.SwordBubble, bubble);
+            if (CompareTag("Player"))
+            {
+                SoundSignals.Instance.onPlaySoundByType.Invoke(SoundType.Bubble);
+            }
+
+            bool isFake = _swords.Count >= maxCollectableSwordCount;
+            
             if (!isFake)
                 IncreaseSword();
         }
@@ -63,7 +73,7 @@ namespace Assets.CoreGame.Scripts.Handlers
 
             for (int i = 0; i < _swords.Count; i++)
             {
-                if (_swords.Count > 10)
+                if (_swords.Count > maxScratchableSwordCount)
                 {
                     if (i % _swordSwitchKey == 0) continue;
                 }
@@ -71,7 +81,7 @@ namespace Assets.CoreGame.Scripts.Handlers
 
                 ScratchSignals.Instance.OnScratchAtPosition?.Invoke(sword.transform.position);
             }
-            _swordSwitchKey %= 2;
+            _swordSwitchKey %= scratchableSwordInterval;
             _swordSwitchKey++;
         }
 
@@ -129,18 +139,6 @@ namespace Assets.CoreGame.Scripts.Handlers
 
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 sword.transform.rotation = Quaternion.Euler(0, 0, angle - 180f);
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("SwordBubble"))
-            {
-                SwordBubbleCollected(collision.gameObject, _swords.Count > 8);
-                if (CompareTag("Player"))
-                {
-                    SoundSignals.Instance.onPlaySoundByType.Invoke(SoundType.Bubble);
-                }
             }
         }
 

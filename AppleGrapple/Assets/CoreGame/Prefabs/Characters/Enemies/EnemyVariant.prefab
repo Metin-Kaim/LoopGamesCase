@@ -155,6 +155,14 @@ PrefabInstance:
       propertyPath: scratchInterval
       value: 0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 4622058389532107006, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: maxScratchableSwordCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622058389532107006, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
+      propertyPath: scratchableSwordInterval
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 988700811322934585, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
     - {fileID: 5289253481090976018, guid: c6a206a28fe560245b5e559fdf8fdea4, type: 3}
@@ -245,7 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bbae35372d49f4fbdec80644e523c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visual: {fileID: 117225607492634630}
   hitMaskTween: {fileID: 5789095489675920975}
 --- !u!114 &5789095489675920975 stripped
 MonoBehaviour:

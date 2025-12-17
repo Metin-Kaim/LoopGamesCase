@@ -57,7 +57,7 @@ namespace Assets.CoreGame.Scripts.Controllers
 
         public void SetTargetPosition(Vector2 newTargetPos, float stoppingDistance = 0.1f)
         {
-            newTargetPos = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(newTargetPos);
+            newTargetPos = GameSignals.Instance.onSetThePositionWithinTheBoundaries.Invoke(newTargetPos);
 
             _targetPos = newTargetPos;
             _stoppingDistance = stoppingDistance;
@@ -69,7 +69,7 @@ namespace Assets.CoreGame.Scripts.Controllers
             float randomDistance = Random.Range(2f, 5f);
             Vector2 targetPos = (randomDirection * randomDistance) + (Vector2)transform.position;
 
-            targetPos = GameSignals.Instance.SetThePositionWithinTheBoundaries.Invoke(targetPos);
+            targetPos = GameSignals.Instance.onSetThePositionWithinTheBoundaries.Invoke(targetPos);
 
             SetTargetPosition(targetPos);
         }

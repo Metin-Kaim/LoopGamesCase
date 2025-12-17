@@ -3,6 +3,7 @@ using Assets.CoreGame.Scripts.Controllers;
 using Assets.CoreGame.Scripts.Enums;
 using Assets.CoreGame.Scripts.Handlers;
 using Assets.CoreGame.Scripts.Managers;
+using Assets.CoreGame.Scripts.Signals;
 using System.Linq;
 using UnityEngine;
 
@@ -63,7 +64,7 @@ namespace Assets.CoreGame.Scripts.StateMachine.Enemy
         private void SetEscapePosition()
         {
             Vector3 directionAwayFromTarget = (enemyMovementController.transform.position - _target.transform.position).normalized;
-            escapePosition = enemyMovementController.transform.position + directionAwayFromTarget * 3 + new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), 0);
+            escapePosition = enemyMovementController.transform.position + directionAwayFromTarget * 2 + new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), 0);
             enemyMovementController.SetTargetPosition(escapePosition);
         }
 
